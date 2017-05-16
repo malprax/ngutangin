@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyString
+  amount: 9.99
+  category: MyString
+  due_date: 2017-05-16
+  prove: MyString
+  warning_unit: MyString
+  warning_count: 1
+  kreditur_id: MyString
+  debitur_id: MyString
+
+two:
+  name: MyString
+  description: MyString
+  amount: 9.99
+  category: MyString
+  due_date: 2017-05-16
+  prove: MyString
+  warning_unit: MyString
+  warning_count: 1
+  kreditur_id: MyString
+  debitur_id: MyString
