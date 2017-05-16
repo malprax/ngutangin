@@ -57,3 +57,18 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Securely Configure Rails Applications
 gem "figaro"
+
+#user sign up and sign in
+gem 'devise'
+
+# authorization
+gem 'cancancan', '~> 1.10'
+
+#facebook login
+gem 'omniauth-facebook'
+
+#google login
+gem "omniauth-google-oauth2"
+
+#simple form
+gem 'simple_form'
