@@ -1,0 +1,15 @@
+<%= simple_form_for(@entry) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="inputs">
+    <%= f.input :debt %>
+    <%= f.input :date %>
+    <%= f.input :status %>
+    <%= f.input :amount %>
+    <%= f.input :prove %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

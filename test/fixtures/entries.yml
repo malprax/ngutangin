@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  debt: 
+  date: 2017-05-16
+  status: MyString
+  amount: 9.99
+  prove: MyString
+
+two:
+  debt: 
+  date: 2017-05-16
+  status: MyString
+  amount: 9.99
+  prove: MyString
