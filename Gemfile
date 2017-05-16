@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Securely Configure Rails Applications
 gem "figaro"
+
+#Facebook Login
+gem 'omniauth-facebook'
