@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
+  scope :not_friends, ->(user) { where.not(id: (user.inverse_friends + [user] + user.friends).map(&:id) ) }
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
@@ -10,8 +11,9 @@ class User < ApplicationRecord
   has_many :friendships
   has_many :friends, through: :friendships
 
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
-  has_many :inverse_friends, :through => :inverse_friendships, :source => :user
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
+
 
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -24,6 +26,13 @@ class User < ApplicationRecord
      # uncomment the line below to skip the confirmation emails.
      user.skip_confirmation!
    end
+  end
+
+  def friends_ids user
+    ids = user.friends.pluck(:id)
+    ids << user.inverse_friends.pluck(:id)
+    ids << user.id
+    return ids
   end
 
 end
