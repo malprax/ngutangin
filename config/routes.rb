@@ -6,4 +6,11 @@ Rails.application.routes.draw do
             :controllers => {
                               :registrations => 'users/registrations',
                             }
+  resources :friendships do
+    member do
+      delete :delete_user, to: 'friendships#delete_user', as: :delete_user
+    end
+  end
+
+  resources :users
 end

@@ -9,10 +9,13 @@ class CreateDebts < ActiveRecord::Migration[5.1]
       t.string :prove
       t.string :warning_unit
       t.integer :warning_count
-      t.string :kreditur_id
-      t.string :debitur_id
+      t.integer :kreditur_id, foreign_key: true
+      t.integer :debitur_id, foreign_key: true
 
       t.timestamps
     end
+
+    add_index :debts, :kreditur_id
+    add_index :debts, :debitur_id
   end
 end
