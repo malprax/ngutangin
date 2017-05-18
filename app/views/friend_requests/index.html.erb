@@ -1,0 +1,42 @@
+<h1>Friend Requests</h1>
+
+<table id="friend-requests">
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @friend_requests.present? %>
+      <% @friend_requests.each do |friend_request| %>
+        <tr>
+          <td><%= friend_request.firstname %></td>
+          <td><%= friend_request.lastname %></td>
+          <td><%= friend_request.email %></td>
+          <td><%= friend_request.phone %></td>
+          <td><%= friend_request.status %></td>
+          <td><%= link_to 'Show', friend_request %></td>
+          <td><%= link_to 'Edit', edit_friend_request_path(friend_request) %></td>
+          <td><%= link_to 'Destroy', friend_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="8">
+          There is no friend request yet.
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Send Pending Request', send_request_friend_request_path(1), remote: true, method: :post, class: 'btn btn-primary pull-right', id: 'send-requests' %>
+
+<br>
+
+<%= link_to 'New Friend Request', new_friend_request_path %>

@@ -1,0 +1,16 @@
+<!--
+$('#send-requests').click(false).addClass('disabled');
+-->
+
+$("#friend-requests td:contains('Pending')").each(
+  function(index, element) {
+    $(element).html($(element).html().replace('Pending', 'Sent'));
+});
+
+$('<%= j render 'shared/notice_banner' %>').fadeIn( 'slow', function() {
+    $(this).appendTo('#notice');
+  }).delay(3000).fadeOut(1000, function(){
+    $(this).remove();
+  });
+
+<% flash[:notice] = nil %>
