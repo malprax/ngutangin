@@ -2,44 +2,44 @@
 1.times do |user|
   User.create([
     {
-      username: 'sunaura',
-      email: 'idsunaura@gmail.com',
-      firstname: 'sunaura',
-      lastname: 'katrali',
+      username: 'rizki',
+      email: 'rizki@gmail.com',
+      firstname: 'rizki',
+      lastname: 'muhammad',
       password: '123456',
       confirmed_at: @now
 
     },
     {
-      username: 'naura',
-      email: 'idnaura@gmail.com',
+      username: 'suhendra',
+      email: 'suhendra@gmail.com',
       firstname: 'suhendra',
       lastname: 'katrali',
       password: '123456',
       confirmed_at: @now
     },
     {
-      username: 'sumuhammad',
-      email: 'idsumuhammad@gmail.com',
-      firstname: 'sumuhammad',
-      lastname: 'katrali',
+      username: 'adhi',
+      email: 'adhi@gmail.com',
+      firstname: 'adhi',
+      lastname: 'guna',
       password: '123456',
       confirmed_at: @now
 
     },
     {
-      username: 'muhammad',
-      email: 'idmuhammad@gmail.com',
-      firstname: 'suhendra',
-      lastname: 'katrali',
+      username: 'aulia',
+      email: 'aulia@gmail.com',
+      firstname: 'aulia',
+      lastname: 'sabril',
       password: '123456',
       confirmed_at: @now
     },
     {
-      username: 'suhe',
-      email: 'idsuhe@gmail.com',
-      firstname: 'suhendra',
-      lastname: 'katrali',
+      username: 'syaiful',
+      email: 'syaiful@gmail.com',
+      firstname: 'syaiful',
+      lastname: 'sabril',
       password: '123456',
       confirmed_at: @now
     }

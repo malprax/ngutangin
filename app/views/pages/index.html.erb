@@ -12,6 +12,20 @@
 <% end %>
 <hr><br>
 
+<h1>All Friends</h1>
+
+<% @all_friends.each do |user| %>
+  <div class="user">
+    <p>
+      <strong><%= user.id %></strong>
+      <strong><%= user.username %></strong>
+      (<%= link_to "remove", unfriend_friendship_path(user.id), method: :delete %>)
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+<hr><br>
+
 <h1>Friends You Add</h1>
 
 <% @friendships.each do |friendship| %>
@@ -34,7 +48,7 @@
     <p>
       <strong><%= friendship.user.id %></strong>
       <strong><%= friendship.user.username %></strong>
-      (<%= link_to "remove", delete_user_friendship_path(friendship), method: :delete %>)
+      (<%= link_to "remove", friendship, method: :delete %>)
       <div class="clear"></div>
     </p>
   </div>

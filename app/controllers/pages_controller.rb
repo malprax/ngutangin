@@ -8,7 +8,7 @@ class PagesController < ApplicationController
 
     @friendships_ids = current_user.friendships.pluck(:id)
     @friendships_inverse_ids = current_user.inverse_friendships.pluck(:id)
-    @all_friendships = Friendship.where(id: @friendships_inverse_ids << @friendships_ids)
+    @all_friends = User.all_friends(current_user)
 
     @friendships_inverse = current_user.inverse_friendships
   end

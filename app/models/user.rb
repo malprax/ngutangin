@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
   scope :not_friends, ->(user) { where.not(id: (user.inverse_friends + [user] + user.friends).map(&:id) ) }
+  scope :all_friends, ->(user) { where(id: (user.inverse_friends + user.friends).map(&:id) ) }
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]

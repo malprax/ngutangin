@@ -11,14 +11,14 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship =  current_user.friendships.find(params[:id])
+    @friendship =  current_user.friendships.find_by_id(params[:id]) || current_user.inverse_friendships.find_by_id(params[:id])
     @friendship.destroy
     flash[:notice] = "Removed friendship."
     redirect_to root_url
   end
 
-  def delete_user
-    @friendship = current_user.inverse_friendships.find(params[:id])
+  def unfriend
+    @friendship = Friendship.where("(user_id = ? and friend_id = ?) or (user_id = ? and friend_id = ?)", current_user.id, params[:id], params[:id], current_user.id ).first
     @friendship.destroy
     flash[:notice] = "Removed friendship."
     redirect_to root_url

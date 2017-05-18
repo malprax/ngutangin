@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   resources :friendships do
     member do
       delete :delete_user, to: 'friendships#delete_user', as: :delete_user
+      delete :unfriend, to: 'friendships#unfriend', as: :unfriend
     end
   end
 
   resources :users
+
 end
