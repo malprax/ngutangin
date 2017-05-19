@@ -1,2 +1,53 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>Welcome, <%= @user.username %></h1>
+<hr><br>
+<% @not_friends.each do |user| %>
+  <div class="user">
+    <p>
+      <strong><%= user.username %></strong>
+      <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+<hr><br>
+
+<h1>All Friends</h1>
+
+<% @all_friends.each do |user| %>
+  <div class="user">
+    <p>
+      <strong><%= user.username %></strong>
+      (<%= link_to "remove", unfriend_friendship_path(user.id), method: :delete %>)
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+<hr><br>
+
+<h1>Friends You Add</h1>
+
+<% @friendships.each do |friendship| %>
+  <div class="friendship">
+    <p>
+      <strong><%= friendship.friend.username %></strong>
+      (<%= link_to "remove", friendship, method: :delete %>)
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+
+<hr><br>
+
+<h1>Friends Add You</h1>
+
+<% @friendships_inverse.each do |friendship| %>
+  <div class="friendship">
+    <p>
+      <strong><%= friendship.user.username %></strong>
+      (<%= link_to "remove", friendship, method: :delete %>)
+      <div class="clear"></div>
+    </p>
+  </div>
+<% end %>
+
+

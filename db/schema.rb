@@ -10,10 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516054007) do
+ActiveRecord::Schema.define(version: 20170516075933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "debts", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.decimal "amount"
+    t.string "category"
+    t.date "due_date"
+    t.string "prove"
+    t.string "warning_unit"
+    t.integer "warning_count"
+    t.integer "kreditur_id"
+    t.integer "debitur_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debitur_id"], name: "index_debts_on_debitur_id"
+    t.index ["kreditur_id"], name: "index_debts_on_kreditur_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.bigint "debt_id"
+    t.date "date"
+    t.string "status"
+    t.decimal "amount"
+    t.string "prove"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_entries_on_debt_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
@@ -40,6 +78,8 @@ ActiveRecord::Schema.define(version: 20170516054007) do
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "entries", "debts"
 end
