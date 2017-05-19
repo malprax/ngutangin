@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   resources :users
 
+  get 'user/edit', to: 'users#edit', as: :edit_password
+  patch 'user/update', to: 'users#update_password', as: :update_password
+
 end
