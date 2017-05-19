@@ -75,3 +75,5 @@ gem 'simple_form'
 
 #react setup
 gem "react_on_rails", "~> 7"
+
+gem 'mini_racer', platforms: :ruby
