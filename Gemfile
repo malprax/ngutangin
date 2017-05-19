@@ -72,3 +72,8 @@ gem "omniauth-google-oauth2"
 
 #simple form
 gem 'simple_form'
+
+#react setup
+gem "react_on_rails", "~> 7"
+
+gem 'mini_racer', platforms: :ruby
