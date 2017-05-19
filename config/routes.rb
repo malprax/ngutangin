@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get 'respond/:token', to: 'friend_requests#respond', as: :respond
     end
   end
+  get 'hello_world', to: 'hello_world#index'
   resources :entries
   resources :debts
   root 'pages#index'
