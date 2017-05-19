@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :friend_requests do
     member do
       post :send_request, to: 'friend_requests#send_request', as: :send_request
-      post 'respond/:token', to: 'friend_requests#respond', as: :respond
+      get 'respond/:token', to: 'friend_requests#respond', as: :respond
     end
   end
   resources :entries

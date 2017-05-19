@@ -31,6 +31,16 @@ class User < ApplicationRecord
    end
   end
 
+  def self.from_ajakan(data)
+   where(email: data.email).first_or_create do |user|
+     user.email = data.email
+     user.password = Devise.friendly_token[0,20]
+     user.firstname = data.firstname
+     user.lastname = data.lastname
+     user.skip_confirmation!
+   end
+  end
+
   def friends_ids user
     ids = user.friends.pluck(:id)
     ids << user.inverse_friends.pluck(:id)

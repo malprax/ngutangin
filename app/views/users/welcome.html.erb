@@ -1,0 +1,9 @@
+ <h3>Thanks for signing up, <%= @user.firstname %></h3>
+
+ <p>You can keep login with your facebook account. But we encourage you to create your password, so you can login manually by entering your email and password. You can do this through the link below.</p>
+
+ <p><%= link_to 'Create My Password', edit_password_url(@user, reset_password_token: @token), class: "btn btn-primary" %></p>
+
+ <p>If you want to do it later, we have sent you email with the link to create your password.</p>
+
+ <p>Thanks for joining and have a great day!</p>

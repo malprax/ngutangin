@@ -1,11 +1,11 @@
-<!--
-$('#send-requests').click(false).addClass('disabled');
--->
+$('#send-request').click(false).addClass('disabled');
 
-$("#friend-requests td:contains('Pending')").each(
-  function(index, element) {
-    $(element).html($(element).html().replace('Pending', 'Sent'));
-});
+if ($("#request-table td:contains('Pending')").length) {
+  $("#request-table td:contains('Pending')").each(
+    function(index, element) {
+      $(element).html($(element).html().replace('Pending', 'Sent'));
+  });
+}
 
 $('<%= j render 'shared/notice_banner' %>').fadeIn( 'slow', function() {
     $(this).appendTo('#notice');

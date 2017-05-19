@@ -1,6 +1,6 @@
 <h1>Friend Requests</h1>
 
-<table id="friend-requests">
+<table id="request-table">
   <thead>
     <tr>
       <th>Firstname</th>
@@ -35,7 +35,7 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Send Pending Request', send_request_friend_request_path(1), remote: true, method: :post, class: 'btn btn-primary pull-right', id: 'send-requests' %>
+<%= link_to 'Send Pending Request', send_request_friend_request_path(1), method: :post, class: 'btn btn-primary pull-right', id: 'send-request' %>
 
 <br>
 
