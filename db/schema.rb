@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516075933) do
+ActiveRecord::Schema.define(version: 20170518044133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,19 @@ ActiveRecord::Schema.define(version: 20170516075933) do
     t.index ["debt_id"], name: "index_entries_on_debt_id"
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.string "status"
+    t.string "request_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -71,8 +84,6 @@ ActiveRecord::Schema.define(version: 20170516075933) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "provider"
-    t.string "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -82,4 +93,5 @@ ActiveRecord::Schema.define(version: 20170516075933) do
   end
 
   add_foreign_key "entries", "debts"
+  add_foreign_key "friend_requests", "users"
 end

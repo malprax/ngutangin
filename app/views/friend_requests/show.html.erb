@@ -1,0 +1,27 @@
+<p>
+  <strong>Firstname:</strong>
+  <%= @friend_request.firstname %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @friend_request.lastname %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @friend_request.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @friend_request.phone %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @friend_request.status %>
+</p>
+
+<%= link_to 'Edit', edit_friend_request_path(@friend_request) %> |
+<%= link_to 'Back', friend_requests_path %>

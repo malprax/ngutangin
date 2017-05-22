@@ -1,0 +1,17 @@
+<tr>
+    <td valign="top" class="bodyContent">
+        <div mc:edit="std_content00">
+
+            <h4 class="h4">
+              Thanks for signing up, <%= @user.firstname ? @user.firstname.upcase_first : 'Friends' %>
+            </h4>
+
+            <p>You can keep login with facebook login. But we encourage you to create your password, so you can login manually by entering your email and password. You can do this through the link below.</p>
+
+            <p><%= link_to 'Create My Password', edit_password_url(@user, reset_password_token: @token) %></p>
+
+            <p>Thanks for joining and have a great day!</p>
+
+        </div>
+    </td>
+</tr>

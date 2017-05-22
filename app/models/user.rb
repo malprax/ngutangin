@@ -15,6 +15,8 @@ class User < ApplicationRecord
   has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
+  has_many :friend_requests
+
 
   def self.from_omniauth(auth)
    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -25,6 +27,17 @@ class User < ApplicationRecord
      # user.image = auth.info.image # assuming the user model has an image
      # If you are using confirmable and the provider(s) you use validate emails,
      # uncomment the line below to skip the confirmation emails.
+     user.skip_confirmation!
+   end
+  end
+
+  def self.from_ajakan(data)
+   where(email: data.email).first_or_create do |user|
+     user.email = data.email
+     user.password = Devise.friendly_token[0,20]
+     user.firstname = data.firstname
+     user.lastname = data.lastname
+     user.username = data.email
      user.skip_confirmation!
    end
   end
