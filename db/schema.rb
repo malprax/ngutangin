@@ -57,6 +57,19 @@ ActiveRecord::Schema.define(version: 20170522071427) do
     t.index ["debt_id"], name: "index_entries_on_debt_id"
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "phone"
+    t.string "status"
+    t.string "request_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_friend_requests_on_user_id"
+  end
+
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id"
     t.integer "friend_id"
@@ -98,4 +111,5 @@ ActiveRecord::Schema.define(version: 20170522071427) do
   add_foreign_key "chats", "chats"
   add_foreign_key "chats", "users"
   add_foreign_key "entries", "debts"
+  add_foreign_key "friend_requests", "users"
 end

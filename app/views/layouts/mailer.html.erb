@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <style>
-      /* Email styles need to be inline */
-    </style>
-  </head>
+<%= render "layouts/email/header" %>
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+  <tr>
+      <td align="center" valign="top">
+          <table border="0" cellpadding="0" cellspacing="0" width="600" id="templateBody">
+              <tr>
+                    <td valign="top">
+                        <table border="0" cellpadding="20" cellspacing="0" width="100%">
+
+                           <%= yield  %>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+<%= render "layouts/email/footer" %>

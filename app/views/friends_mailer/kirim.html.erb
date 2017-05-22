@@ -1,0 +1,23 @@
+<tr>
+    <td valign="top" class="bodyContent">
+        <div mc:edit="std_content00">
+          <p><b>Hi <%= @ajakan.firstname.upcase_first %>,</b></p>
+
+          <%= @subject.upcase_first %>
+
+          <p>
+            If you like to join us. Just follow the link below:
+          </p>
+
+          <a href="<%= @accept %>"><%= @accept %></a>
+
+          <p>
+            Or you can reject it by following below link:
+          </p>
+
+          <a href="<%= @reject %>"><%= @reject %></a>
+
+        </div>
+    </td>
+</tr>
+

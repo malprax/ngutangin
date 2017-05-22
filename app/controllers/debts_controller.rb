@@ -4,7 +4,9 @@ class DebtsController < ApplicationController
   # GET /debts
   # GET /debts.json
   def index
-    @debts = Debt.all
+    @debts = Debt.includes(:kreditur, :debitur).where("kreditur_id = ? or debitur_id = ?", current_user.id, current_user.id)
+    @utangs = @debts.where(kreditur_id: current_user.id)
+    @piutangs = @debts.where(debitur_id: current_user.id)
   end
 
   # GET /debts/1
