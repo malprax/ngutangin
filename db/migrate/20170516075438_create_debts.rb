@@ -7,6 +7,7 @@ class CreateDebts < ActiveRecord::Migration[5.1]
       t.string :category
       t.date :due_date
       t.string :prove
+      t.string :status
       t.string :warning_unit
       t.integer :warning_count
       t.integer :kreditur_id, foreign_key: true
