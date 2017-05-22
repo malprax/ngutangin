@@ -4,7 +4,6 @@ class CreateDebts < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :description
       t.decimal :amount
-      t.string :category
       t.date :due_date
       t.string :prove
       t.string :status

@@ -1,6 +1,8 @@
 module ApplicationHelper
   def login_helper style = ''
     if current_user.present?
+      (link_to "Debts", debts_path, class: style) +
+      " ".html_safe +
       (link_to "Edit Profile", edit_user_registration_path, class: style) +
       " ".html_safe +
       (link_to "Logout", destroy_user_session_path, method: :delete, class: style)

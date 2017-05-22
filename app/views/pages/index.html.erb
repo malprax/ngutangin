@@ -18,6 +18,8 @@
     <p>
       <strong><%= user.firstname %></strong>
       (<%= link_to "remove", unfriend_friendship_path(user.id), method: :delete %>)
+      (<%= link_to "Tambah Utang", new_debt_path %>)
+      (<%= link_to "Tambah Piutang", new_debt_path %>)
       <div class="clear"></div>
     </p>
   </div>
