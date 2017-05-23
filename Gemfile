@@ -77,3 +77,6 @@ gem 'simple_form'
 gem "react_on_rails", "~> 7"
 
 gem 'mini_racer', platforms: :ruby
+
+#database column in model
+gem "annotate"
