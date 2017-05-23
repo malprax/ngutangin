@@ -10,6 +10,7 @@
       <th>Prove</th>
       <th>Warning unit</th>
       <th>Warning count</th>
+      <th>Status</th>
       <th>Jenis</th>
       <th>Dari</th>
       <th colspan="3"></th>
@@ -26,6 +27,7 @@
         <td><%= debt.prove %></td>
         <td><%= debt.warning_unit %></td>
         <td><%= debt.warning_count %></td>
+        <td><%= debt.status %></td>
         <td><%= debt.jenis(current_user) %></td>
         <td><%= debt.debitur.firstname || debt.kreditur.firstname %></td>
         <td><%= link_to 'Show', debt %></td>
@@ -49,8 +51,9 @@
       <th>Prove</th>
       <th>Warning unit</th>
       <th>Warning count</th>
+      <th>Status</th>
       <th>Debitur</th>
-      <th colspan="3"></th>
+      <th colspan="5"></th>
     </tr>
   </thead>
 
@@ -64,7 +67,10 @@
         <td><%= debt.prove %></td>
         <td><%= debt.warning_unit %></td>
         <td><%= debt.warning_count %></td>
+        <td><%= debt.status %></td>
         <td><%= debt.debitur.firstname %></td>
+        <td><%= link_to 'Approve', approve_debt_path(debt) %></td>
+        <td><%= link_to 'Reject', reject_debt_path(debt) %></td>
         <td><%= link_to 'Show', debt %></td>
         <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
         <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -86,6 +92,7 @@
       <th>Prove</th>
       <th>Warning unit</th>
       <th>Warning count</th>
+      <th>Status</th>
       <th>Kreditur</th>
       <th colspan="3"></th>
     </tr>
@@ -101,6 +108,7 @@
         <td><%= debt.prove %></td>
         <td><%= debt.warning_unit %></td>
         <td><%= debt.warning_count %></td>
+        <td><%= debt.status %></td>
         <td><%= debt.kreditur.firstname %></td>
         <td><%= link_to 'Show', debt %></td>
         <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
@@ -112,4 +120,5 @@
 
 <br>
 
-<%= link_to 'New Debt', new_debt_path %>
+<%= link_to 'Utang Baru', add_utang_debts_path %>
+<%= link_to 'Piutang Baru', add_piutang_debts_path %>
