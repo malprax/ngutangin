@@ -1,9 +1,9 @@
-<h1>Welcome, <%= @user.username %></h1>
+<h1>Welcome, <%= @user.firstname %></h1>
 <hr><br>
 <% @not_friends.each do |user| %>
   <div class="user">
     <p>
-      <strong><%= user.username %></strong>
+      <strong><%= user.firstname %></strong>
       <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
       <div class="clear"></div>
     </p>
@@ -16,8 +16,10 @@
 <% @all_friends.each do |user| %>
   <div class="user">
     <p>
-      <strong><%= user.username %></strong>
+      <strong><%= user.firstname %></strong>
       (<%= link_to "remove", unfriend_friendship_path(user.id), method: :delete %>)
+      (<%= link_to "Tambah Utang", new_debt_path %>)
+      (<%= link_to "Tambah Piutang", new_debt_path %>)
       <div class="clear"></div>
     </p>
   </div>
@@ -29,7 +31,7 @@
 <% @friendships.each do |friendship| %>
   <div class="friendship">
     <p>
-      <strong><%= friendship.friend.username %></strong>
+      <strong><%= friendship.friend.firstname %></strong>
       (<%= link_to "remove", friendship, method: :delete %>)
       <div class="clear"></div>
     </p>
@@ -43,7 +45,7 @@
 <% @friendships_inverse.each do |friendship| %>
   <div class="friendship">
     <p>
-      <strong><%= friendship.user.username %></strong>
+      <strong><%= friendship.user.firstname %></strong>
       (<%= link_to "remove", friendship, method: :delete %>)
       <div class="clear"></div>
     </p>

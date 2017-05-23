@@ -2,12 +2,15 @@ class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
   scope :not_friends, ->(user) { where.not(id: (user.inverse_friends + [user] + user.friends).map(&:id) ) }
   scope :all_friends, ->(user) { where(id: (user.inverse_friends + user.friends).map(&:id) ) }
+  scope :utang_piutang, ->(user) { where()}
 
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook]
 
-  has_many :utang, class_name: 'Debt', foreign_key: 'kreditur_id'
-  has_many :piutang, class_name: 'Debt', foreign_key: 'debitur_id'
+  has_many :utangs, class_name: 'Debt', foreign_key: 'kreditur_id' # penerima pinjaman
+  has_many :piutangs, class_name: 'Debt', foreign_key: 'debitur_id' # pemberi pinjaman
+
+  has_many :chats
 
   has_many :friendships
   has_many :friends, through: :friendships
@@ -16,6 +19,7 @@ class User < ApplicationRecord
   has_many :inverse_friends, through: :inverse_friendships, source: :user
 
   has_many :friend_requests
+
 
 
   def self.from_omniauth(auth)

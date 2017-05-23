@@ -6,7 +6,6 @@ class CreateEntries < ActiveRecord::Migration[5.1]
       t.string :status
       t.decimal :amount
       t.string :prove
-
       t.timestamps
     end
   end

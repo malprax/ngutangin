@@ -1,6 +1,4 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Debts</h1>
+<h1>Utang Piutang</h1>
 
 <table>
   <thead>
@@ -8,13 +6,12 @@
       <th>Name</th>
       <th>Description</th>
       <th>Amount</th>
-      <th>Category</th>
       <th>Due date</th>
       <th>Prove</th>
       <th>Warning unit</th>
       <th>Warning count</th>
-      <th>Kreditur</th>
-      <th>Debitur</th>
+      <th>Jenis</th>
+      <th>Dari</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -25,13 +22,86 @@
         <td><%= debt.name %></td>
         <td><%= debt.description %></td>
         <td><%= debt.amount %></td>
-        <td><%= debt.category %></td>
         <td><%= debt.due_date %></td>
         <td><%= debt.prove %></td>
         <td><%= debt.warning_unit %></td>
         <td><%= debt.warning_count %></td>
-        <td><%= debt.kreditur_id %></td>
-        <td><%= debt.debitur_id %></td>
+        <td><%= debt.jenis(current_user) %></td>
+        <td><%= debt.debitur.firstname || debt.kreditur.firstname %></td>
+        <td><%= link_to 'Show', debt %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1>Utang</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Due date</th>
+      <th>Prove</th>
+      <th>Warning unit</th>
+      <th>Warning count</th>
+      <th>Debitur</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @utangs.each do |debt| %>
+      <tr>
+        <td><%= debt.name %></td>
+        <td><%= debt.description %></td>
+        <td><%= debt.amount %></td>
+        <td><%= debt.due_date %></td>
+        <td><%= debt.prove %></td>
+        <td><%= debt.warning_unit %></td>
+        <td><%= debt.warning_count %></td>
+        <td><%= debt.debitur.firstname %></td>
+        <td><%= link_to 'Show', debt %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<h1>PIUTANG</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Due date</th>
+      <th>Prove</th>
+      <th>Warning unit</th>
+      <th>Warning count</th>
+      <th>Kreditur</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @piutangs.each do |debt| %>
+      <tr>
+        <td><%= debt.name %></td>
+        <td><%= debt.description %></td>
+        <td><%= debt.amount %></td>
+        <td><%= debt.due_date %></td>
+        <td><%= debt.prove %></td>
+        <td><%= debt.warning_unit %></td>
+        <td><%= debt.warning_count %></td>
+        <td><%= debt.kreditur.firstname %></td>
         <td><%= link_to 'Show', debt %></td>
         <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
         <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>

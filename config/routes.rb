@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :utang
+  resources :piutang
+
   resources :users
 
   get 'user/edit', to: 'users#edit', as: :edit_password

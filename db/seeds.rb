@@ -45,3 +45,27 @@
     }
     ])
 end
+
+@user = User.find(2)
+@users_ids = [1,3,4,5]
+
+10.times do |debt|
+  @user.utangs.create([
+    {
+      name: "nama utang",
+      amount: 10000,
+      due_date: @now,
+      status: 'accept',
+      debitur_id: @users_ids.sample
+      }
+    ])
+  @user.piutangs.create([
+    {
+      name: "nama piutang",
+      amount: 10000,
+      due_date: @now,
+      status: 'accept',
+      kreditur_id: @users_ids.sample
+      }
+    ])
+end
