@@ -10,7 +10,8 @@ class User < ApplicationRecord
   has_many :utangs, class_name: 'Debt', foreign_key: 'kreditur_id' # penerima pinjaman
   has_many :piutangs, class_name: 'Debt', foreign_key: 'debitur_id' # pemberi pinjaman
 
-  has_many :chats
+  # has_many :chats
+   has_many :chats, as: :chatable
 
   has_many :friendships
   has_many :friends, through: :friendships

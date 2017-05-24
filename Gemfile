@@ -80,3 +80,13 @@ gem 'mini_racer', platforms: :ruby
 
 #database column in model
 gem "annotate"
+
+#Uploading files
+gem "shrine"
+gem "carrierwave"
+
+#web socket server
+gem "redis"
+
+#data storage
+gem 'cloudinary'

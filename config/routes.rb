@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get 'user/edit', to: 'users#edit', as: :edit_password
   patch 'user/update', to: 'users#update_password', as: :update_password
 
+  mount ActionCable.server => '/cable'
+
 end
