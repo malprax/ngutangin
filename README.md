@@ -22,17 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+#1commenttable reply_form
+#2install_annotate
+#3cara bikin automatis annotatenya
+#4install shrine buat uploading, kalu misalnya chat ada attachmentnya
+#5bikin controller chat dia nested dari controller debt
+#6validasi chat bisa komen kalu dia kreditur atau debitur, messagenya tidak boleh kosong,
+
+
 #bikin aplikasi chat
-#commenttable reply_form
-#install_annotate
-#cara bikin automatis annotatenya
-
-#bikin controller chat dia nested dari controller debt
-
-#validasi chat bisa komen kalu dia kreditur atau debitur, messagenya tidak boleh kosong, validasi nya di cancancan saya sarankan
-
-#install shrine buat uploading, kalu misalnya chat ada attachmentnya
-
+ validasi nya di cancancan saya sarankan
 #pelajari resource cancancan tentang nested setting
-#bikin aplikasi chat yang bisa saling koment
 #usahakan sampe hari kamis nanti di usahakan

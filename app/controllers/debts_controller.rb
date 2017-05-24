@@ -12,6 +12,8 @@ class DebtsController < ApplicationController
   # GET /debts/1
   # GET /debts/1.json
   def show
+    @debt = Debt.includes(:chats).find(params[:id])
+    @chat = Chat.new
   end
 
   # GET /debts/new

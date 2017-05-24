@@ -50,5 +50,9 @@
   <%= @debt.debitur_id %>
 </p>
 
+<%= render 'chats/chat_form' %>
+
+<%= render @debt.chats %>
+
 <%= link_to 'Edit', edit_debt_path(@debt) %> |
 <%= link_to 'Back', debts_path %>
