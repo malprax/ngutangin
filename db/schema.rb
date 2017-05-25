@@ -16,12 +16,14 @@ ActiveRecord::Schema.define(version: 20170522071427) do
   enable_extension "plpgsql"
 
   create_table "chats", force: :cascade do |t|
-    t.integer "chatable_id"
-    t.string "chatable_type"
+    t.bigint "user_id"
+    t.bigint "debt_id"
     t.text "message"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["debt_id"], name: "index_chats_on_debt_id"
+    t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
   create_table "debts", force: :cascade do |t|
@@ -103,6 +105,8 @@ ActiveRecord::Schema.define(version: 20170522071427) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "chats", "debts"
+  add_foreign_key "chats", "users"
   add_foreign_key "entries", "debts"
   add_foreign_key "friend_requests", "users"
 end
