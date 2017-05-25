@@ -3,17 +3,17 @@ module ApplicationCable
     identified_by :current_user
 
     def connect
-      # self.current_user = find_verified_user
-      self.current_user = User.find(4)
+      self.current_user = find_verified_user
+      # self.current_user = User.find(4)
       logger.add_tags 'ActionCable', current_user.email
       logger.add_tags 'ActionCable', current_user.id
     end
 
     protected
-    # def find_verified_user
-    #   if verified_user = env['warden'].user
-    #     verified_user
-    #   end
-    # end
+    def find_verified_user
+      if verified_user = env['warden'].user
+        verified_user
+      end
+    end
   end
 end

@@ -13,7 +13,7 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'send_chat', chat: chat, debt_id: debt_id
   $('#new_chat').submit (e) ->
     $this = $(this)
-    textarea = $this.find('#chat_content')
+    textarea = $this.find('#chat_message')
     if $.trim(textarea.val()).length > 1
       App.global_chat.send_chat textarea.val(),
       chats.data('debt-id')
