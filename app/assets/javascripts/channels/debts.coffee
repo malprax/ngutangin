@@ -14,6 +14,7 @@ jQuery(document).on 'turbolinks:load', ->
   $('#new_chat').submit (e) ->
     $this = $(this)
     textarea = $this.find('#chat_message')
+    # trim gunanya validasi yang skip white space
     if $.trim(textarea.val()).length > 1
       App.global_chat.send_chat textarea.val(),
       chats.data('debt-id')
