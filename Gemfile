@@ -86,7 +86,7 @@ gem "shrine"
 gem "carrierwave"
 
 #web socket server
-gem "redis"
+gem 'redis', '~> 3.3', '>= 3.3.3'
 
 #data storage
 gem 'cloudinary'

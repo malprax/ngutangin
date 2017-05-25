@@ -8,6 +8,6 @@ class DebtsChannel < ApplicationCable::Channel
   end
 
   def send_chat(data)
-    current_user.debts.create!(message: data['chat'], chat_id: data['chat_id'])
+    current_user.chats.create!(message: data['chat'], debt_id: data['debt_id'])
   end
 end
