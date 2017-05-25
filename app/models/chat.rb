@@ -16,4 +16,6 @@ class Chat < ApplicationRecord
   # belongs_to :reply_from, class_name: 'Chat', foreign_key: 'chat_id'
   belongs_to :chatable, polymorphic: true #, optional: true
   validates :message, presence: true
+
+  after_create_commit {ChatBroadcastJob.perform_later(self)}
 end
