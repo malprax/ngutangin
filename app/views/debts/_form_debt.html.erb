@@ -1,16 +1,16 @@
-<%= simple_form_for(@debt) do |f| %>
+<%= simple_form_for(@debt, url: add_utang_debts_path, method: :post) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
     <%= f.input :name %>
     <%= f.input :amount %>
-    <%= f.input :category %>
     <%= f.input :due_date %>
     <%= f.input :prove %>
     <%= f.input :warning_unit %>
     <%= f.input :warning_count %>
+    <%= f.input :debitur_id, collection: @all_friends.map { |u| [u.firstname + " " + u.lastname, u.id]}, label: "Select Friend" %>
   </div>
-
+<br>
   <div class="actions">
     <%= f.button :submit %>
   </div>

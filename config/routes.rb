@@ -7,7 +7,23 @@ Rails.application.routes.draw do
   end
   get 'hello_world', to: 'hello_world#index'
   resources :entries
-  resources :debts
+  resources :debts do
+    member do
+      get :approve, to: 'debts#approve', as: :approve
+      get :reject, to: 'debts#reject', as: :reject
+    end
+    collection do
+      # with friend id
+      get 'user/:id/create_utang', to: 'debts#new_utang', as: :create_utang
+      get 'user/:id/create_piutang', to: 'debts#new_piutang', as: :create_piutang
+      # without friend id
+      get 'user/create_utang', to: 'debts#new_debt', as: :add_utang
+      post 'user/create_utang', to: 'debts#create_utang'
+      get 'user/create_piutang', to: 'debts#new_credit', as: :add_piutang
+      post 'user/create_piutang', to: 'debts#create_piutang'
+    end
+  end
+
   root 'pages#index'
   devise_for :users,
             :controllers => {

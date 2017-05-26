@@ -1,5 +1,5 @@
 class DebtsController < ApplicationController
-  before_action :set_debt, only: [:show, :edit, :update, :destroy]
+  before_action :set_debt, only: [:show, :edit, :update, :destroy, :reject, :approve]
 
   # GET /debts
   # GET /debts.json
@@ -16,9 +16,53 @@ class DebtsController < ApplicationController
     @chat = Chat.new
   end
 
+  def approve
+    @debt.update(status: "Approve")
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_to @debt, notice: 'Anda telah menyetujui utang.' }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: 'Utang tidak dapat di temukan.' }
+      end
+    end
+  end
+
+  def reject
+    @debt.update(status: "Reject")
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_to @debt, notice: 'Anda telah menolak utang.' }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: 'Utang tidak dapat di temukan.' }
+      end
+    end
+  end
+
   # GET /debts/new
-  def new
+  def new_debt
     @debt = Debt.new
+    @all_friends = User.all_friends(current_user)
+  end
+
+  def new_credit
+    @debt = Debt.new
+    @all_friends = User.all_friends(current_user)
+  end
+
+
+  def new_utang
+    @debt = Debt.new
+    session[:debitur_id] = params[:id]
+  end
+
+
+  def new_piutang
+    @debt = Debt.new
+    session[:kreditur_id] = params[:id]
   end
 
   # GET /debts/1/edit
@@ -33,6 +77,32 @@ class DebtsController < ApplicationController
     respond_to do |format|
       if @debt.save
         format.html { redirect_to @debt, notice: 'Debt was successfully created.' }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_utang
+    @debt = current_user.utangs.create(params.require(:debt).permit(:name, :amount, :due_date, :prove, :warning_unit, :warning_count, :debitur_id).merge(status: 'Approve'))
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_to @debt, notice: 'Utang was successfully created.' }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_piutang
+    @debt = current_user.piutangs.create(params.require(:debt).permit(:name, :amount, :due_date, :prove, :warning_unit, :warning_count, :kreditur_id).merge(status: 'Pending'))
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_to @debt, notice: 'Piutang was successfully created.' }
         format.json { render :show, status: :created, location: @debt }
       else
         format.html { render :new }
