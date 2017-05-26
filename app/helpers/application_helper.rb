@@ -1,6 +1,8 @@
 module ApplicationHelper
   def login_helper style = ''
     if current_user.present?
+      (link_to "Home", root_path, class: style) +
+      " ".html_safe +
       (link_to "Debts", debts_path, class: style) +
       " ".html_safe +
       (link_to "Friend Requests", friend_requests_path, class: style) +

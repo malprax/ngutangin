@@ -1,4 +1,4 @@
-<%= simple_form_for(@debt) do |f| %>
+<%= simple_form_for(@debt, url: add_piutang_debts_path, method: :post ) do |f| %>
   <%= f.error_notification %>
 
   <div class="inputs">
@@ -8,6 +8,7 @@
     <%= f.input :prove %>
     <%= f.input :warning_unit %>
     <%= f.input :warning_count %>
+    <%= f.input :kreditur_id, as: :hidden, input_html: {value: session[:kreditur_id]} %>
   </div>
 
   <div class="actions">
