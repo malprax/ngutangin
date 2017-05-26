@@ -17,5 +17,5 @@
 #
 
 class Entry < ApplicationRecord
-  belongs_to debt
+  belongs_to :debt
 end

@@ -1,0 +1,131 @@
+<h3>Nama Lengkap: <%= @friend.firstname + " " + @friend.lastname %></h3>
+<h3>Email: <%= @friend.email %></h3>
+<hr>
+
+<h1>Utang Piutang</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Due date</th>
+      <th>Prove</th>
+      <th>Status</th>
+      <th>Jenis</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @debts.each do |debt| %>
+      <tr>
+        <td><%= debt.name %></td>
+        <td><%= debt.description %></td>
+        <td><%= debt.amount %></td>
+        <td><%= debt.due_date %></td>
+        <td><%= debt.prove %></td>
+        <td><%= debt.status %></td>
+        <td><%= debt.jenis(current_user) %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><b>Total</b> </td>
+      <td><%= @piutangs.sum(:amount) - @utangs.sum(:amount) %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+<h1>Utang</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Due date</th>
+      <th>Prove</th>
+      <th>Status</th>
+      <th colspan="5"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @utangs.each do |debt| %>
+      <tr>
+        <td><%= debt.name %></td>
+        <td><%= debt.description %></td>
+        <td><%= debt.amount %></td>
+        <td><%= debt.due_date %></td>
+        <td><%= debt.prove %></td>
+        <td><%= debt.status %></td>
+        <td><%= link_to 'Bayar Lunas', bayar_lunas_debt_path(debt.id) %></td>
+        <td><%= link_to 'Pay', new_entry_path(debt_id: debt.id) %></td>
+        <td><%= link_to 'Approve', approve_debt_path(debt) %></td>
+        <td><%= link_to 'Reject', reject_debt_path(debt) %></td>
+        <td><%= link_to 'Show', debt %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><b>Total</b> </td>
+      <td><%= @utangs.sum(:amount) %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+<h1>PIUTANG</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Due date</th>
+      <th>Prove</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @piutangs.each do |debt| %>
+      <tr>
+        <td><%= debt.name %></td>
+        <td><%= debt.description %></td>
+        <td><%= debt.amount %></td>
+        <td><%= debt.due_date %></td>
+        <td><%= debt.prove %></td>
+        <td><%= debt.status %></td>
+        <td><%= link_to 'Lunas', lunas_debt_path(debt.id) %></td>
+        <td><%= link_to 'Show', debt %></td>
+        <td><%= link_to 'Edit', edit_debt_path(debt) %></td>
+        <td><%= link_to 'Destroy', debt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2"><b>Total</b> </td>
+      <td><%= @piutangs.sum(:amount) %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<br>
+
+<%= link_to 'Utang Baru', add_utang_debts_path %>
+<%= link_to 'Piutang Baru', add_piutang_debts_path %>
+

@@ -1,5 +1,5 @@
 class DebtsController < ApplicationController
-  before_action :set_debt, only: [:show, :edit, :update, :destroy, :reject, :approve]
+  before_action :set_debt, only: [:show, :edit, :update, :destroy, :reject, :approve, :lunas, :bayar_lunas]
 
   # GET /debts
   # GET /debts.json
@@ -12,15 +12,51 @@ class DebtsController < ApplicationController
   # GET /debts/1
   # GET /debts/1.json
   def show
-    @debt = Debt.includes(:chats).find(params[:id])
+    @debt = Debt.find(params[:id])
     @chat = Chat.new
   end
 
   def approve
+    # Hanya pemilik utang/kreditur yang berhak mengapprove
+    if @debt.kreditur_id != current_user.id
+      return redirect_back(fallback_location: root_path, notice: 'Maaf, Anda tidak memiliki hak untuk mengapprove utang ini.')
+    end
+
     @debt.update(status: "Approve")
     respond_to do |format|
       if @debt.persisted?
         format.html { redirect_to @debt, notice: 'Anda telah menyetujui utang.' }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: 'Utang tidak dapat di temukan.' }
+      end
+    end
+  end
+
+  def lunas
+    # Hanya pemilik piutang/debitur yang berhak memberi status lunas
+    if @debt.debitur_id != current_user.id
+      return redirect_back(fallback_location: root_path, notice: 'Maaf, Anda tidak memiliki hak untuk melunaskan utang ini.')
+    end
+
+    @debt.update(status: "Lunas")
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_back(fallback_location: root_path, notice: 'Status hutang telah menjadi lunas.') }
+        format.json { render :show, status: :created, location: @debt }
+      else
+        format.html { render :new }
+        format.json { render json: @debt.errors, status: 'Utang tidak dapat di temukan.' }
+      end
+    end
+  end
+
+  def bayar_lunas
+    @debt.update(status: "Dibayar Lunas")
+    respond_to do |format|
+      if @debt.persisted?
+        format.html { redirect_back(fallback_location: root_path, notice: 'Status hutang telah menjadi dibayar lunas.') }
         format.json { render :show, status: :created, location: @debt }
       else
         format.html { render :new }

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'friends', to: 'friends#index'
+  get 'friend/:id', to: 'friends#show', as: :friend_show
+
   resources :friend_requests do
     member do
       post :send_request, to: 'friend_requests#send_request', as: :send_request
@@ -11,6 +14,9 @@ Rails.application.routes.draw do
     member do
       get :approve, to: 'debts#approve', as: :approve
       get :reject, to: 'debts#reject', as: :reject
+      get :lunas, to: 'debts#lunas', as: :lunas
+      get :bayar_lunas, to: 'debts#bayar_lunas', as: :bayar_lunas
+      get :cicil, to: 'debts#cicil', as: :cicil
     end
     collection do
       # with friend id
