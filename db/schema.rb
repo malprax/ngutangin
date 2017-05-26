@@ -17,14 +17,12 @@ ActiveRecord::Schema.define(version: 20170522071427) do
 
   create_table "chats", force: :cascade do |t|
     t.bigint "user_id"
-    t.bigint "chat_id"
-    t.integer "chatable_id"
-    t.string "chatable_type"
+    t.bigint "debt_id"
     t.text "message"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["chat_id"], name: "index_chats_on_chat_id"
+    t.index ["debt_id"], name: "index_chats_on_debt_id"
     t.index ["user_id"], name: "index_chats_on_user_id"
   end
 
@@ -32,7 +30,6 @@ ActiveRecord::Schema.define(version: 20170522071427) do
     t.string "name"
     t.string "description"
     t.decimal "amount"
-    t.string "category"
     t.date "due_date"
     t.string "prove"
     t.string "status"
@@ -108,7 +105,7 @@ ActiveRecord::Schema.define(version: 20170522071427) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "chats", "chats"
+  add_foreign_key "chats", "debts"
   add_foreign_key "chats", "users"
   add_foreign_key "entries", "debts"
   add_foreign_key "friend_requests", "users"

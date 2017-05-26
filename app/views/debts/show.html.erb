@@ -16,11 +16,6 @@
 </p>
 
 <p>
-  <strong>Category:</strong>
-  <%= @debt.category %>
-</p>
-
-<p>
   <strong>Due date:</strong>
   <%= @debt.due_date %>
 </p>
@@ -49,6 +44,12 @@
   <strong>Debitur:</strong>
   <%= @debt.debitur_id %>
 </p>
+
+<%= render 'chats/chat_form' %>
+
+<div id="chats" data-debt-id="<%= @debt.id %>">
+  <%= render @debt.chats %>
+</div>
 
 <%= link_to 'Edit', edit_debt_path(@debt) %> |
 <%= link_to 'Back', debts_path %>

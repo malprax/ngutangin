@@ -12,6 +12,8 @@ class DebtsController < ApplicationController
   # GET /debts/1
   # GET /debts/1.json
   def show
+    @debt = Debt.includes(:chats).find(params[:id])
+    @chat = Chat.new
   end
 
   def approve
@@ -134,13 +136,13 @@ class DebtsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_debt
-      @debt = Debt.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_debt
+    @debt = Debt.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def debt_params
-      params.require(:debt).permit(:name, :description, :amount, :category, :due_date, :prove, :warning_unit, :warning_count, :kreditur_id, :debitur_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def debt_params
+    params.require(:debt).permit(:name, :description, :amount, :category, :due_date, :prove, :warning_unit, :warning_count, :kreditur_id, :debitur_id)
+  end
 end

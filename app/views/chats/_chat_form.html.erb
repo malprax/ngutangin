@@ -1,0 +1,15 @@
+<% if current_user %>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="col-md-12">
+        <%= form_for @chat, url: '#' do |f| %>
+          <div class="form-group">
+            <%= f.label :message %>
+            <%= f.text_area :message, class: 'form-control' %>
+          </div>
+          <%= f.submit 'Chat', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

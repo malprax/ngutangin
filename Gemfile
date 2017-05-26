@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'jquery-rails'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -77,3 +78,16 @@ gem 'simple_form'
 gem "react_on_rails", "~> 7"
 
 gem 'mini_racer', platforms: :ruby
+
+#database column in model
+gem "annotate"
+
+#Uploading files
+gem "shrine"
+gem "carrierwave"
+
+#web socket server
+gem 'redis', '~> 3.3', '>= 3.3.3'
+
+#data storage
+gem 'cloudinary'

@@ -1,3 +1,38 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  username               :string           default(""), not null
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  firstname              :string
+#  lastname               :string
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  confirmation_token     :string
+#  confirmed_at           :datetime
+#  confirmation_sent_at   :datetime
+#  unconfirmed_email      :string
+#  provider               :string
+#  uid                    :string
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_confirmation_token    (confirmation_token) UNIQUE
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_username              (username) UNIQUE
+#
+
 class User < ApplicationRecord
   # :lockable, :timeoutable and :omniauthable
   scope :not_friends, ->(user) { where.not(id: (user.inverse_friends + [user] + user.friends).map(&:id) ) }
@@ -10,7 +45,8 @@ class User < ApplicationRecord
   has_many :utangs, class_name: 'Debt', foreign_key: 'kreditur_id' # penerima pinjaman
   has_many :piutangs, class_name: 'Debt', foreign_key: 'debitur_id' # pemberi pinjaman
 
-  has_many :chats
+  has_many :chats, dependent: :destroy
+  #  has_many :chats, as: :chatable
 
   has_many :friendships
   has_many :friends, through: :friendships
