@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import helloWorldReducer from '../../../reducers/devise/registrations/new';
+import registrationsNewReducer from '../../../reducers/devise/registrations/new';
 
-const configureStore = (railsProps) => (
-  createStore(helloWorldReducer, railsProps)
+const RegistrationsNewStore = (railsProps) => (
+  createStore(registrationsNewReducer, railsProps)
 );
 
-export default configureStore;
+export default RegistrationsNewStore;

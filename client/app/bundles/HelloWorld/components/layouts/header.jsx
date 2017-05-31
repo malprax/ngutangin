@@ -35,6 +35,8 @@ const Logged = (props) => (
 
 Logged.muiName = 'IconMenu';
 
+
+
 class Header extends Component {
   render() {
     return (
