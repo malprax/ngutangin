@@ -1,29 +1,31 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import React, {Component} from 'react';
+import LayoutHeader from '../../layouts/header';
+import LayoutFooter from '../../layouts/footer';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-const HelloWorldDevise = ({ name, updateName }) => (
-  <div>
-    <h3>
-      Hello, {name}!
-    </h3>
-    <hr />
-    <form >
-      <label htmlFor="name">
-        Say hello to:
-      </label>
-      <input
-        id="name"
-        type="text"
-        value={name}
-        onChange={(e) => updateName(e.target.value)}
-      />
-    </form>
-  </div>
+// default matererial ui
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+
+class HelloWorldDevise extends Component {
+  render() {
+    return (
+      <div>
+        <LayoutHeader />
+
+        
+
+        <LayoutFooter />
+      </div>
+    );
+  }
+}
+
+const App = () => (
+  <MuiThemeProvider>
+    <HelloWorldDevise />
+  </MuiThemeProvider>
 );
 
-HelloWorldDevise.propTypes = {
-  name: PropTypes.string.isRequired,
-  updateName: PropTypes.func.isRequired,
-};
 
-export default HelloWorldDevise;
+export default App;
