@@ -30,6 +30,7 @@ class SessionsNewDevise extends Component {
               <TextField type="password" floatingLabelText="Your Password" fullWidth={true} />
               <p className="devise">Forgot Password?</p>
               <RaisedButton label="Login" primary={true} fullWidth={true} />
+              <p className="devise">Didn't receive confirmation instruction?</p>
               <p>Don't have NGUTANGIN account?</p>
               <p className="devise">Register now</p>
             </CardText>
