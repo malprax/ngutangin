@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import LayoutsHeader from './layouts/header';
+import LayoutsHeader from '../layouts/header';
 import {Paper, GridList, GridTile, IconButton, Subheader, FloatingActionButton} from 'material-ui/';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
-import LayoutsFooter from './layouts/footer';
+import LayoutsFooter from '../layouts/footer';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 
@@ -30,59 +30,42 @@ const tilesData = [
     img: 'images/grid-list/jenduns.jpg',
     name: 'Jennifer Duns',
     created_at: 'Apr 13th, 2017',
+  },
+  {
+    img: 'images/grid-list/jentan.jpg',
+    name: 'Jennifer Tan',
+    created_at: 'Apr 13th, 2017',
+  },
+  {
+    img: 'images/grid-list/josmith.jpg',
+    name: 'Jojo Smith',
+    created_at: 'Apr 13th, 2017',
+  },
+  {
+    img: 'images/grid-list/jeduns.jpg',
+    name: 'Jenny Duns',
+    created_at: 'Apr 13th, 2017',
+  },
+  {
+    img: 'images/grid-list/jatan.jpg',
+    name: 'Jane Tan',
+    created_at: 'Apr 13th, 2017',
   }
 ]
 
-
-class Index extends Component {
+class Contacts extends Component {
   render() {
     return (
       <div>
         <LayoutsHeader />
           <Paper className="styles-paper-content">
-            <h1>Welcome,</h1>
+            <h3>My Contact</h3>
             <div style={styles.root}>
               <GridList
                 cellHeight={180}
                 style={styles.gridList}
               >
-                <Subheader><h2>All Friends</h2></Subheader>
-                {tilesData.map((tile) => (
-                  <GridTile
-                    key={tile.img}
-                    title={tile.name}
-                    subtitle={<span>join since <b>{tile.created_at}</b></span>}
-                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                  >
-                    <img src={tile.img} />
-                  </GridTile>
-                ))}
-              </GridList>
-            </div>
-            <div style={styles.root}>
-              <GridList
-                cellHeight={180}
-                style={styles.gridList}
-              >
-                <Subheader><h2>Friends You Add</h2></Subheader>
-                {tilesData.map((tile) => (
-                  <GridTile
-                    key={tile.img}
-                    title={tile.name}
-                    subtitle={<span>join since <b>{tile.created_at}</b></span>}
-                    actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-                  >
-                    <img src={tile.img} />
-                  </GridTile>
-                ))}
-              </GridList>
-            </div>
-            <div style={styles.root}>
-              <GridList
-                cellHeight={180}
-                style={styles.gridList}
-              >
-                <Subheader><h2>Friends Add You</h2></Subheader>
+                <Subheader><h3>Total: 2500</h3></Subheader>
                 {tilesData.map((tile) => (
                   <GridTile
                     key={tile.img}
@@ -108,11 +91,11 @@ class Index extends Component {
   }
 }
 
-const IndexComponent = () => (
+const ContactsComponent = () => (
   <MuiThemeProvider>
-    <Index />
+    <Contacts />
   </MuiThemeProvider>
 );
 
 
-export default IndexComponent;
+export default ContactsComponent;
