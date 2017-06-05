@@ -31,3 +31,18 @@ p {
 .devise {
   font-weight: bold;
 }
+
+.styles-paper-content {
+  position: relative;
+  width: 50% !important;
+  margin: auto !important;
+}
+
+.content {
+  position: relative;
+}
+.button-add {
+    position: absolute;
+    right: -75px;
+    bottom: 0px;
+}

@@ -96,7 +96,7 @@ class Index extends Component {
               </GridList>
             </div>
             <div className="button-add">
-              <FloatingActionButton margin-right="20px">
+              <FloatingActionButton>
                 <ContentAdd />
               </FloatingActionButton>
             </div>
