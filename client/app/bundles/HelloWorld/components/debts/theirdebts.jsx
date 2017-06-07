@@ -27,7 +27,7 @@ class Index extends Component {
         <LayoutsHeader />
           <Paper className="styles-paper-content">
             <List>
-              <h3>My Debts: Rp 7000</h3>
+              <h3>Their Debts: Rp 7000</h3>
               <ListItem
                 leftAvatar={
                   <Avatar

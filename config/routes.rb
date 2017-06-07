@@ -21,6 +21,9 @@ Rails.application.routes.draw do
       post 'user/create_utang', to: 'debts#create_utang'
       get 'user/create_piutang', to: 'debts#new_credit', as: :add_piutang
       post 'user/create_piutang', to: 'debts#create_piutang'
+      get '/mydebts', to: 'debts#mydebts'
+      get '/theirdebts', to: 'debts#theirdebts'
+      get '/contacts', to: 'debts#contacts'
     end
   end
 
