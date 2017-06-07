@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppBar, IconMenu, IconButton, Menu, MenuItem, FlatButton, Toggle, Divider} from 'material-ui';
+import {AppBar, IconMenu, IconButton, Drawer, Menu, MenuItem, FlatButton, Toggle, Divider} from 'material-ui';
 import AccountCircle from 'material-ui/svg-icons/action/account-circle';
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 import Payment  from 'material-ui/svg-icons/action/payment';
@@ -33,36 +33,35 @@ const Logged = (props) => (
   </IconMenu>
 );
 
-const SideNav = (props) => (
-  <IconMenu
-    {...props}
-    iconButtonElement={
-      <IconButton><NavigationMenu color="white" /></IconButton>
-    }
-    targetOrigin={{horizontal: 'left', vertical: 'top'}}
-    anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-  >
-    <Menu>
-      <MenuItem primaryText="My Debts" leftIcon={<Payment />} />
-      <MenuItem primaryText="Their debts" leftIcon={<AccountBalanceWallet />} />
-      <MenuItem primaryText="My Contacts" leftIcon={<Contacts />} />
-    </Menu>
-  </IconMenu>
-);
-
 Logged.muiName = 'IconMenu';
-SideNav.muiName = 'IconMenu';
-
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+
+  handleToggle = () => this.setState({open: !this.state.open});
+
   render() {
     return (
       <div>
         <AppBar
           title="NGUTANGIN"
           iconElementRight={<Logged />}
-          iconElementLeft={<SideNav />}
+          iconElementLeft={
+            <IconButton onTouchTap={this.handleToggle}>
+              <NavigationMenu color="white" />
+            </IconButton>
+          }
         />
+        <Drawer open={this.state.open}>
+          <MenuItem primaryText="NGUTANGIN" leftIcon={<Payment />} style={{height: '64px', fontsize: '24px', backgroundcolor: 'cyan500',}} onTouchTap={this.handleToggle} />
+          <Divider />
+          <MenuItem primaryText="My Debts" leftIcon={<Payment />} />
+          <MenuItem primaryText="Their debts" leftIcon={<AccountBalanceWallet />} />
+          <MenuItem primaryText="My Contacts" leftIcon={<Contacts />} />
+        </Drawer>
       </div>
     );
   }

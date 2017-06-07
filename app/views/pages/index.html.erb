@@ -1,4 +1,4 @@
-<h1>Welcome, <%= @user.firstname %></h1>
+<!-- <h1>Welcome, <%= @user.firstname %></h1>
 <hr><br>
 <% @not_friends.each do |user| %>
   <div class="user">
@@ -51,6 +51,7 @@
       <div class="clear"></div>
     </p>
   </div>
-<% end %>
+<% end %> -->
 
-
+<%= react_component("IndexApp", props: { email: "Email Address", password: "Your Password" }, prerender: false) %>
+<%= link_to "Logout", destroy_user_session_path, method: :delete %>

@@ -5,6 +5,7 @@ import ConfirmationsNewApp from './devise/confirmations/new';
 import RegistrationsNewApp from './devise/registrations/new';
 import RegistrationsEditApp from './devise/registrations/edit';
 import SessionsNewApp from './devise/sessions/new';
+import IndexApp from './IndexApp';
 import TestHelloWorld from './TestHelloWorld';
 
 // This is how react_on_rails can see the HelloWorld in the browser.
@@ -14,5 +15,6 @@ ReactOnRails.register({
   RegistrationsNewApp,
   RegistrationsEditApp,
   SessionsNewApp,
+  IndexApp,
   TestHelloWorld
 });
