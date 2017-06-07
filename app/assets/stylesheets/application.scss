@@ -12,3 +12,28 @@
  *
  *= require me_style
  */
+
+
+// custom styles
+
+.login-register {
+  width: 22rem;
+  margin: 70px auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+
+p {
+  text-align: center;
+}
+
+.devise {
+  font-weight: bold;
+}
+
+.styles-paper-content {
+  width: 50% !important;
+  margin: auto !important;
+  padding: 20px;
+}
